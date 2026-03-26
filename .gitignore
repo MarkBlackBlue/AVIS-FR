@@ -1,0 +1,22 @@
+# .gitignore for Joomla! CMS
+
+# Core files
+configuration.php
+.env
+
+# Cache and temporary directories
+/cache/*
+/tmp/*
+/logs/*
+/administrator/cache/*
+
+# Media and uploads (optional: keep placeholders but exclude heavy content)
+/images/sampledata/*
+
+# Node.js
+node_modules/
+npm-debug.log
+
+# System files
+.DS_Store
+Thumbs.db

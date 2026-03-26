@@ -1,0 +1,43 @@
+name: Lighthouse CI & Accessibility
+
+on:
+  pull_request:
+    branches: [ develop ]
+
+jobs:
+  lighthouse-ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check if website files exist
+        id: check_files
+        uses: andstor/file-existence-action@v2
+        with:
+          files: "src/template/index.php, tests/placeholder/index.html"
+
+      - name: Install Node.js
+        if: steps.check_files.outputs.files_exists == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Lighthouse CI
+        if: steps.check_files.outputs.files_exists == 'true'
+        run: npm install -g @lhci/cli@0.13.x
+
+      - name: Run Lighthouse CI
+        if: steps.check_files.outputs.files_exists == 'true'
+        run: |
+          lhci autorun --config=lighthouserc.json
+        continue-on-error: true
+
+      - name: Install Pa11y
+        if: steps.check_files.outputs.files_exists == 'true'
+        run: npm install -g pa11y
+
+      - name: Run Pa11y Audit
+        if: steps.check_files.outputs.files_exists == 'true'
+        run: |
+          pa11y --standard WCAG2AA tests/placeholder/index.html
+        continue-on-error: true
