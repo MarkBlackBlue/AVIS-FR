@@ -2,6 +2,7 @@ AVIS Frosinone — Restyling Completo 2026
 Repository: MarkBlackBlue/avis-frosinone-restyling
 Status: Fase 3/5 in corso (Copywriting)
 Ultimo aggiornamento: 27 Marzo 2026, 00:50 CET
+
 ________________________________________
 1. Scopo del Progetto
 Trasformazione di avisfrosinone.it da sito brochure statico (informativo istituzionale) a hub di conversione digitale focalizzato su due obiettivi paralleli:
